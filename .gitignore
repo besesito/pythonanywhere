@@ -1,0 +1,12 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+settings.py
+db.sqlite3
+/collected_static/
+/media
+/.idea
+supervisord.conf
+celerybeat-schedule
+node_modules/
