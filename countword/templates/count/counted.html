@@ -1,0 +1,8 @@
+<h1>This is Your text:</h1>
+<h2> {{fulltext}} </h2>
+<h1> Total words of your text is: {{total}} </h1>
+<h2>Your text contains these words:</h2>
+{% for word, value in dictionary %}
+{{ word }} - {{ value }}
+<br/>
+{% endfor %}
