@@ -5,10 +5,14 @@ def count(request):
     return render(request, 'count/count.html')
 
 def counted(request):
-    fulltext = request.GET['fulltext']
-    text_list = fulltext.split()
-    dictionary={}
-    for x in text_list:
-        dictionary[x]=text_list.count(x)
-    dictionary = sorted(dictionary.items(), key=operator.itemgetter(1), reverse=True)
-    return render(request, 'count/counted.html', {'fulltext':fulltext, 'total':len(text_list), 'dictionary':dictionary})
+    text = request.POST
+    try:
+        text2 = text.__getitem__('fulltext')
+        text_list = text2.split()
+        dictionary = {}
+        for x in text_list:
+            dictionary[x] = text_list.count(x)
+        dictionary = sorted(dictionary.items(), key=operator.itemgetter(1), reverse=True)
+        return render(request, 'count/counted.html', {'total': len(text_list), 'dictionary': dictionary})
+    except:
+        return render(request, 'count/counted.html')
